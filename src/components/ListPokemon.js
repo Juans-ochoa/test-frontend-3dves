@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Chip,
   ListItem,
   ListItemAvatar,
   ListItemText,
@@ -12,7 +13,7 @@ function ListPokemon({ name, image, weight, height }) {
     <>
       <ListItem
         alignItems='flex-start'
-        style={{ border: "thin solid #cdc4c2", borderRadius: "1rem" }}>
+        style={{ border: "thin solid  #bdb0ad ", borderRadius: "1rem" }}>
         <ListItemAvatar>
           <Avatar alt={name} src={image} />
         </ListItemAvatar>
@@ -25,14 +26,14 @@ function ListPokemon({ name, image, weight, height }) {
                 component='span'
                 variant='body2'
                 color='text.primary'>
-                Weight: {weight}
+                Weight: <Chip label={weight} size='small' color='warning' />
               </Typography>
               <Typography
                 sx={{ display: "inline", margin: "0 5px 0 0" }}
                 component='span'
                 variant='body2'
                 color='text.primary'>
-                Height: {height}
+                Height: <Chip label={height} color='info' size='small' />
               </Typography>
             </>
           }
