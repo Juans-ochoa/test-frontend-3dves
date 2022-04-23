@@ -1,4 +1,6 @@
+import { Grid } from "@mui/material";
 import Head from "next/head";
+import PokemonProfile from "../components/PokemonProfile";
 import WrapperPokemons from "../components/WrapperPokemons";
 
 export default function Home() {
@@ -9,7 +11,16 @@ export default function Home() {
         <meta name='description' content='Relod to pssx' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <WrapperPokemons />
+      <Grid container spacing={2}>
+        <Grid item sm={12} md={9}>
+          <WrapperPokemons />
+        </Grid>
+        <Grid item sm={12} md={3}>
+          <aside style={{ width: "100%", textAlign: "center" }}>
+            <PokemonProfile />
+          </aside>
+        </Grid>
+      </Grid>
     </div>
   );
 }
