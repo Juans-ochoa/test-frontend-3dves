@@ -13,5 +13,11 @@ export async function getPokemons() {
     }
   } catch (err) {}
 
-  return pokemons;
+  return pokemons.map((el) => ({
+    id: el.id,
+    name: el.name,
+    image: el.sprites.other.dream_world.front_default,
+    height: el.height,
+    weight: el.weight,
+  }));
 }
