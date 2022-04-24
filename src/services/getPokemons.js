@@ -1,4 +1,4 @@
-let url = "https://pokeapi.co/api/v2/pokemon";
+let url = "https://pokeapi.co/api/v2/pokemon?limit=200";
 
 export async function getPokemons() {
   let pokemons = [];
