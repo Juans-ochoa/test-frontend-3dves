@@ -1,4 +1,5 @@
 import {
+  Button,
   Paper,
   Table,
   TableBody,
@@ -8,12 +9,15 @@ import {
   TableRow,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { selectPokemon } from "../actions/pokemonActions";
 import { getPokemons } from "../services/getPokemons";
 import Spinner from "./global/Spinner";
 
 export default function ListTablePokemons() {
   const [pokemons, setPokemons] = useState([]);
   const [loader, setLoader] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setLoader(true);
@@ -31,11 +35,12 @@ export default function ListTablePokemons() {
           <Table stickyHeader sx={{ minWidth: 650 }} aria-label='simple table'>
             <TableHead>
               <TableRow>
-                <TableCell>Id</TableCell>
-                <TableCell>Image</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Weight</TableCell>
-                <TableCell>Height</TableCell>
+                <TableCell align='center'>Id</TableCell>
+                <TableCell align='center'>Image</TableCell>
+                <TableCell align='center'>Name</TableCell>
+                <TableCell align='center'>Weight</TableCell>
+                <TableCell align='center'>Height</TableCell>
+                <TableCell align='center'>Select Pokemon</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -43,8 +48,8 @@ export default function ListTablePokemons() {
                 <TableRow
                   key={pokemon.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                  <TableCell align='right'>{pokemon.id}</TableCell>
-                  <TableCell component='th' scope='pokemon'>
+                  <TableCell align='center'>{pokemon.id}</TableCell>
+                  <TableCell align='center' scope='pokemon'>
                     <img
                       src={pokemon.image}
                       width='50'
@@ -52,11 +57,18 @@ export default function ListTablePokemons() {
                       alt={pokemon.name}
                     />
                   </TableCell>
-                  <TableCell component='th' scope='pokemon'>
+                  <TableCell align='center' scope='pokemon'>
                     {pokemon.name}
                   </TableCell>
-                  <TableCell align='right'>{pokemon.weight}</TableCell>
-                  <TableCell align='right'>{pokemon.height}</TableCell>
+                  <TableCell align='center'>{pokemon.weight}</TableCell>
+                  <TableCell align='center'>{pokemon.height}</TableCell>
+                  <TableCell align='center'>
+                    <Button
+                      variant='contained'
+                      onClick={() => dispatch(selectPokemon(pokemon))}>
+                      Seelct
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
